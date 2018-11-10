@@ -59,7 +59,7 @@ import { connect } from 'react-redux'
 import * as actionCreators from './action-creators'
 
 class Home extends React.Component {
-  onTimeButtonClick (delay) {
+  onTimeButtonClick(delay) {
     // This button handler will dispatch an action in response to a click event from a user.
     // We use here the dispatch function "automatically" provided by connect in a prop.
     // There are alternative ways to call actionCreators that are already bound to dispatch and those
@@ -69,24 +69,24 @@ class Home extends React.Component {
     // are able to get the current time. Try to change this value to verify that the delay correctly impacts our UI.
     this.props.dispatch(actionCreators.getTime(delay))
   }
-  render () {
+  render() {
 
     // Thanks to "connect", we're able to get specific selected data, through the props.
     var { frozen, time, reduxState } = this.props
     var attrs = {}
-    const DELAY = 500 // in ms
+    const DELAY = 5000 // in ms
 
     if (frozen) {
-        attrs = {
-          disabled: true
-        }
+      attrs = {
+        disabled: true
+      }
     }
 
     return (
       <div>
         <h1>Provider and connect example</h1>
         <span>
-          <b>What time is it?</b> { time ? `It is currently ${time}` : 'No idea yet...' }
+          <b>What time is it?</b> {time ? `It is currently ${time}` : 'No idea yet...'}
         </span>
         <br /> <br />
         <i>
@@ -95,9 +95,9 @@ class Home extends React.Component {
         </i>
         <br />
         {/* We register our button "onClick" handler here: */}
-        <button { ...attrs } onClick={() => this.onTimeButtonClick(DELAY)}>Get time!</button>
+        <button {...attrs} onClick={() => this.onTimeButtonClick(DELAY)}>Get time!</button>
         <pre>
-          redux state = { JSON.stringify(reduxState, null, 2) }
+          redux state = {JSON.stringify(reduxState, null, 2)}
         </pre>
       </div>
     )
